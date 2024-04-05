@@ -33,17 +33,23 @@ jobs:
       - name: 🎡 Fetch data from 2023
         run: |
           months=(1 2 3 4 5 6 7 8 9 10 11 12)
-          for str in ${months[@]}; do date='2023-'$str'-01'
-            python StatisticsData.py $date done
+          for str in ${months[@]}; do
+            date='2023-'$str'-01'
+            python StatisticsData.py $date 
+          done
 
       - name: 🎡 Fetch data from 2024
         run: |
           months=(1 2 3)
-          for str in ${months[@]}; do date='2024-'$str'-01'
-            python StatisticsData.py $date done
+          for str in ${months[@]}; do
+            date='2024-'$str'-01'
+            python StatisticsData.py $date 
+          done
 
       - name: 🎡 Fetch data from 2022
         run: |
           months=(1 2 3 4 5 6 7 8 9 10 11 12)
-          for str in ${months[@]}; do date='2022-'$str'-01'
-            python StatisticsData.py $date done
+          for str in ${months[@]}; do 
+            date='2022-'$str'-01'
+            python StatisticsData.py $date 
+          done
