@@ -2,6 +2,7 @@
 import Files
 import datetime
 import sys
+import os
 
 def countTotal(parts):
     total = 0
@@ -44,7 +45,9 @@ def main():
     prepareDataForSaving(year, month, data, parts, total, url)
 
     files.setJsonToFile(filename, data)
-  
+    
+    os.remove(filename)
+    
     return 0  
 
 if __name__ == '__main__':
