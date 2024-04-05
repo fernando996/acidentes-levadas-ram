@@ -53,3 +53,9 @@ jobs:
             date='2022-'$str'-01'
             python StatisticsData.py $date 
           done
+
+      - name: 🛠️ Commit acident data
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: feature/fetch_documents_data
