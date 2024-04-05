@@ -33,21 +33,22 @@ def main():
         date = datetime.datetime.now()
 
     filename = "metadata.pdf"
+    dataFile = "data.json"
 
     files = Files.Files()
     url   = files.downloadFileFromUrl(date, filename)
     parts = files.readPdfContent(filename)
     total = countTotal(parts)
-    data  = files.getCurrentJsonDataFromFile("data.json")
+    data  = files.getCurrentJsonDataFromFile(dataFile)
     year  = date.strftime("%Y")
     month = date.strftime("%m")
 
     prepareDataForSaving(year, month, data, parts, total, url)
 
-    files.setJsonToFile(filename, data)
+    files.setJsonToFile(dataFile, data)
     
     os.remove(filename)
-    
+
     return 0  
 
 if __name__ == '__main__':
