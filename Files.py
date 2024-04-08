@@ -3,6 +3,7 @@ import requests
 from PyPDF2 import PdfReader
 import Locations
 import json
+# import re
 
 class Files:
     parts = []
@@ -13,6 +14,7 @@ class Files:
         url = Url.getUrlForDownload(date)
         r   = requests.get(url, stream=True)
 
+        
         with open(filename, 'wb') as f:
             f.write(r.content)
         
@@ -26,9 +28,18 @@ class Files:
         return self.parts
 
     def visitor_body(self, text, cm, tm, font_dict, font_size):
+
+        # pattern = re.compile(r"0([\d])")
+        # m = pattern.match(text)
+                
+        # if m :
+        text = text.replace("0", "0 ")
+            # print(text)
+
         texts = list(filter(None, text.split()))
+        
         for t in texts:
-            if t.isdigit():
+            if t.isdigit() and t!="2022":
                 if len(self.ySize) == 0: 
                     self.ySize.append(int(t))
                 elif self.ySize[-1] == int(t) or self.ySize[-1] > int(t)  :
