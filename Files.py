@@ -1,17 +1,21 @@
 import Url
 import requests
-from PyPDF2 import PdfReader
 import Locations
 import json
+
+from tika import parser # pip install tika
 
 class Files:
     parts = []
     index = 0
     ySize = []
+    year  = None
 
     def downloadFileFromUrl(self, date, filename):
-        url = Url.getUrlForDownload(date)
-        r   = requests.get(url, stream=True)
+        self.year = date.year
+        
+        url  = Url.getUrlForDownload(date)
+        r    = requests.get(url, stream=True)
 
         
         with open(filename, 'wb') as f:
@@ -20,19 +24,16 @@ class Files:
         return url
 
     def readPdfContent(self, filename):
-        reader = PdfReader(filename)
-        page = reader.pages[0]
-        page.extract_text(visitor_text=self.visitor_body)
+        raw   = parser.from_file(filename)
+        texts = raw['content'].split(".xlsx")
+
+        self.getData(texts[1])
 
         return self.parts
 
-    def visitor_body(self, text, cm, tm, font_dict, font_size):
-        text = text.replace("0", "0 ")
-
-        texts = list(filter(None, text.split()))
-        
+    def getData(self, texts) :        
         for t in texts:
-            if t.isdigit() and t!="2022":
+            if t.isdigit() :
                 if len(self.ySize) == 0: 
                     self.ySize.append(int(t))
                 elif self.ySize[-1] == int(t) or self.ySize[-1] > int(t)  :
