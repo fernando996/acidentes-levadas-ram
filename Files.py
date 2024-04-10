@@ -6,15 +6,20 @@ import json
 from tika import parser # pip install tika
 
 class Files:
-    parts = []
-    index = 0
-    ySize = []
-    year  = None
+    parts   = []
+    index   = 0
+    ySize   = []
+    year    = None
+    uriType = 'pdf'
+
+    # default constructor
+    def __init__(self, uriType = 'pdf'):
+        self.uriType = uriType
 
     def downloadFileFromUrl(self, date, filename):
         self.year = date.year
         
-        url  = Url.getUrlForDownload(date)
+        url  = Url.getUrlForDownload(date) if  self.uriType == 'pdf' else Url.getZipUrlForDownload(date)
         r    = requests.get(url, stream=True)
 
         
@@ -25,8 +30,23 @@ class Files:
 
     def readPdfContent(self, filename):
         raw   = parser.from_file(filename)
-        texts = raw['content'].split(".xlsx")
 
+        spWord = ".xlsx"
+
+        
+        
+        if "SRPC, IP-RAM" in raw['content'] :
+            spWord = "SRPC, IP-RAM"   
+
+        if ".pdf" in raw['content'] :
+            spWord = ".pdf"
+        if ".docx" in raw['content'] :
+            spWord = ".docx"    
+
+
+
+        texts = raw['content'].split(spWord)
+        print(texts[0])
         self.getData(texts[1])
 
         return self.parts
