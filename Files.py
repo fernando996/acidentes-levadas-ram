@@ -49,14 +49,12 @@ class Files:
         text = raw['content'].replace(year, "")
         texts = text.split(spWord)
         self.getData(texts[1])
-        
+
         return self.parts
 
     def getData(self, texts) :        
         for t in texts:
             if t.isdigit() :
-                # print(t)
-                # print(self.ySize)
                 if len(self.ySize) == 0: 
                     self.ySize.append(int(t))
                 elif self.ySize[-1] == int(t) or self.ySize[-1] > int(t)  :
