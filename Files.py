@@ -14,6 +14,10 @@ class Files:
 
     # default constructor
     def __init__(self, uriType = 'pdf'):
+        self.parts   = []
+        self.index   = 0
+        self.ySize   = []
+        self.year    = None
         self.uriType = uriType
 
     def downloadFileFromUrl(self, date, filename):
@@ -28,32 +32,31 @@ class Files:
         
         return url
 
-    def readPdfContent(self, filename):
+    def readPdfContent(self, filename, year = ''):
+        print(filename)
         raw   = parser.from_file(filename)
 
-        spWord = ".xlsx"
+        spWord = "SRPC, IP-RAM"
 
-        
-        
-        if "SRPC, IP-RAM" in raw['content'] :
-            spWord = "SRPC, IP-RAM"   
+        if ".xlsx" in raw['content'] :
+            spWord = ".xlsx"   
 
         if ".pdf" in raw['content'] :
             spWord = ".pdf"
         if ".docx" in raw['content'] :
             spWord = ".docx"    
 
-
-
-        texts = raw['content'].split(spWord)
-        print(texts[0])
+        text = raw['content'].replace(year, "")
+        texts = text.split(spWord)
         self.getData(texts[1])
-
+        
         return self.parts
 
     def getData(self, texts) :        
         for t in texts:
             if t.isdigit() :
+                # print(t)
+                # print(self.ySize)
                 if len(self.ySize) == 0: 
                     self.ySize.append(int(t))
                 elif self.ySize[-1] == int(t) or self.ySize[-1] > int(t)  :
