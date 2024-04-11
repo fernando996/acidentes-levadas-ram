@@ -1,0 +1,35 @@
+name: Monthly fecth
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: '0 18 4 * *'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: 🐍 Install PIP requirements
+        run: pip install -r requirements.txt
+
+      # Runs a set of commands using the runners shell
+      - name: 🎡 Fetch data from the month
+        run: python StatisticsData.py
+
+      - name: 🛠️ Commit acident data
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: feature/fetch_documents_data
