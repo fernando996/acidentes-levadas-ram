@@ -3,19 +3,7 @@ import Files
 import datetime
 import sys
 import os
-
-def countTotal(parts):
-    total = 0
-    for i in parts:
-        total+= i["text"] 
-
-    return total
-
-def prepareDataForSaving(year, month, data, parts, total, url):
-    if (year in data) is False :
-        data[year] = {}
-
-    data[year][month] = {"data":parts, "total":total, "url":url} 
+import common
 
 def main():
     inputDate = None 
@@ -38,12 +26,12 @@ def main():
     files = Files.Files()
     url   = files.downloadFileFromUrl(date, filename)
     parts = files.readPdfContent(filename)
-    total = countTotal(parts)
+    total = common.countTotal(parts)
     data  = files.getCurrentJsonDataFromFile(dataFile)
     year  = date.strftime("%Y")
     month = date.strftime("%m")
 
-    prepareDataForSaving(year, month, data, parts, total, url)
+    common.prepareDataForSaving(year, month, data, parts, total, url)
 
     files.setJsonToFile(dataFile, data)
     

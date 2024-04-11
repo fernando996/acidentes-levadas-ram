@@ -3,22 +3,10 @@ import datetime
 import zipfile
 import os
 import Url
+import common
 
 years  = [2016,2017,2018,2019,2020]
 months = ["01","02","03","04","05","06","07","08","09","10","11","12"]
-
-def countTotal(parts):
-    total = 0
-    for i in parts:
-        total+= i["text"] 
-
-    return total
-
-def prepareDataForSaving(year, month, data, parts, total, url):
-    if (year in data) is False :
-        data[year] = {}
-
-    data[year][month] = {"data":parts, "total":total, "url":url} 
 
 data = {}
 
@@ -52,15 +40,15 @@ for i in years:
         files = Files.Files('zip')
 
         parts = files.readPdfContent(_filename, str(i))
-        total = countTotal(parts)
+        total = common.countTotal(parts)
     
         year  = i
         month = j
 
-        prepareDataForSaving(year, month, data, parts, total, url)
+        common.prepareDataForSaving(year, month, data, parts, total, url)
         files.setJsonToFile(dataFile, data)
 
-        prepareDataForSaving(year, month, currentData, parts, total, url)
+        common.prepareDataForSaving(year, month, currentData, parts, total, url)
         files.setJsonToFile(currentDataFile, currentData)
 
 

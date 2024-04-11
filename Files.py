@@ -32,9 +32,8 @@ class Files:
         
         return url
 
-    def readPdfContent(self, filename, year = ''):
-        print(filename)
-        raw   = parser.from_file(filename)
+    def readPdfContent(self, filename, year = '', disSplit = False):
+        raw = parser.from_file(filename)
 
         spWord = "SRPC, IP-RAM"
 
@@ -46,8 +45,13 @@ class Files:
         if ".docx" in raw['content'] :
             spWord = ".docx"    
 
+
         text = raw['content'].replace(year, "")
-        texts = text.split(spWord)
+
+        texts = [text, text]
+        if disSplit == False:
+            texts = text.split(spWord)
+            
         self.getData(texts[1])
 
         return self.parts
