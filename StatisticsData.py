@@ -33,7 +33,7 @@ def main():
         date = datetime.datetime.now()
 
     filename = "metadata.pdf"
-    dataFile = "data.json"
+    dataFile = "data/data.json"
 
     files = Files.Files()
     url   = files.downloadFileFromUrl(date, filename)

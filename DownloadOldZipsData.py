@@ -5,7 +5,6 @@ import os
 import Url
 
 years  = [2016,2017,2018,2019,2020]
-# years  = [2013,2014,2015,2016,2017,2018,2019,2020]
 months = ["01","02","03","04","05","06","07","08","09","10","11","12"]
 
 def countTotal(parts):
@@ -24,8 +23,8 @@ def prepareDataForSaving(year, month, data, parts, total, url):
 data = {}
 
 files = Files.Files()
-dataFile = "zipData.json"
-currentDataFile = "data.json"
+dataFile = "data/zipData.json"
+currentDataFile = "data/data.json"
 currentData = files.getCurrentJsonDataFromFile(currentDataFile)
 
 for i in years:
