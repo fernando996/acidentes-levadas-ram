@@ -1,34 +1,64 @@
 import Url
 import requests
-from PyPDF2 import PdfReader
 import Locations
 import json
 
+from tika import parser # pip install tika
+
 class Files:
-    parts = []
-    index = 0
-    ySize = []
+    parts   = []
+    index   = 0
+    ySize   = []
+    year    = None
+    uriType = 'pdf'
+
+    # default constructor
+    def __init__(self, uriType = 'pdf'):
+        self.parts   = []
+        self.index   = 0
+        self.ySize   = []
+        self.year    = None
+        self.uriType = uriType
 
     def downloadFileFromUrl(self, date, filename):
-        url = Url.getUrlForDownload(date)
-        r   = requests.get(url, stream=True)
+        self.year = date.year
+        
+        url  = Url.getUrlForDownload(date) if  self.uriType == 'pdf' else Url.getZipUrlForDownload(date)
+        r    = requests.get(url, stream=True)
 
+        
         with open(filename, 'wb') as f:
             f.write(r.content)
         
         return url
 
-    def readPdfContent(self, filename):
-        reader = PdfReader(filename)
-        page = reader.pages[0]
-        page.extract_text(visitor_text=self.visitor_body)
+    def readPdfContent(self, filename, year = '', disSplit = False):
+        raw = parser.from_file(filename)
+
+        spWord = "SRPC, IP-RAM"
+
+        if ".xlsx" in raw['content'] :
+            spWord = ".xlsx"   
+
+        if ".pdf" in raw['content'] :
+            spWord = ".pdf"
+        if ".docx" in raw['content'] :
+            spWord = ".docx"    
+
+
+        text = raw['content'].replace(year, "")
+
+        texts = [text, text]
+        if disSplit == False:
+            texts = text.split(spWord)
+            
+        self.getData(texts[1])
 
         return self.parts
 
-    def visitor_body(self, text, cm, tm, font_dict, font_size):
-        texts = list(filter(None, text.split()))
+    def getData(self, texts) :        
         for t in texts:
-            if t.isdigit():
+            if t.isdigit() :
                 if len(self.ySize) == 0: 
                     self.ySize.append(int(t))
                 elif self.ySize[-1] == int(t) or self.ySize[-1] > int(t)  :
