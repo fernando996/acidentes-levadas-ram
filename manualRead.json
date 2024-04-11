@@ -1,0 +1,248 @@
+{
+    "2015": {
+        "01": {
+            "data": [
+                {
+                    "text": 1,
+                    "name": "Calheta",
+                    "id": "calheta"
+                },
+                {
+                    "text": 0,
+                    "name": "C\u00e2mara de Lobos",
+                    "id": "camralobos"
+                },
+                {
+                    "text": 0,
+                    "name": "Funchal",
+                    "id": "funchal"
+                },
+                {
+                    "text": 1,
+                    "name": "Machico",
+                    "id": "machico"
+                },
+                {
+                    "text": 0,
+                    "name": "Ponta do Sol",
+                    "id": "pontasol"
+                },
+                {
+                    "text": 0,
+                    "name": "Porto Moniz",
+                    "id": "portomoniz"
+                },
+                {
+                    "text": 0,
+                    "name": "Porto Santo",
+                    "id": "portosanto"
+                },
+                {
+                    "text": 0,
+                    "name": "Ribeira Brava",
+                    "id": "ribeirabrava"
+                },
+                {
+                    "text": 0,
+                    "name": "Santa Cruz",
+                    "id": "santacruz"
+                },
+                {
+                    "text": 0,
+                    "name": "Santana",
+                    "id": "santana"
+                },
+                {
+                    "text": 0,
+                    "name": "S\u00e3o Vicente",
+                    "id": "saovicente"
+                }
+            ],
+            "total": 2,
+            "url": "http://www.procivmadeira.pt/images/dispositivo-socorro/zip2015.zip"
+        },
+        "02": {
+            "data": [
+                {
+                    "text": 2,
+                    "name": "Calheta",
+                    "id": "calheta"
+                },
+                {
+                    "text": 0,
+                    "name": "C\u00e2mara de Lobos",
+                    "id": "camralobos"
+                },
+                {
+                    "text": 2,
+                    "name": "Funchal",
+                    "id": "funchal"
+                },
+                {
+                    "text": 0,
+                    "name": "Machico",
+                    "id": "machico"
+                },
+                {
+                    "text": 0,
+                    "name": "Ponta do Sol",
+                    "id": "pontasol"
+                },
+                {
+                    "text": 0,
+                    "name": "Porto Moniz",
+                    "id": "portomoniz"
+                },
+                {
+                    "text": 0,
+                    "name": "Porto Santo",
+                    "id": "portosanto"
+                },
+                {
+                    "text": 0,
+                    "name": "Ribeira Brava",
+                    "id": "ribeirabrava"
+                },
+                {
+                    "text": 0,
+                    "name": "Santa Cruz",
+                    "id": "santacruz"
+                },
+                {
+                    "text": 0,
+                    "name": "Santana",
+                    "id": "santana"
+                },
+                {
+                    "text": 0,
+                    "name": "S\u00e3o Vicente",
+                    "id": "saovicente"
+                }
+            ],
+            "total": 4,
+            "url": "http://www.procivmadeira.pt/images/dispositivo-socorro/zip2015.zip"
+        },
+        "03": {
+            "data": [
+                {
+                    "text": 0,
+                    "name": "Calheta",
+                    "id": "calheta"
+                },
+                {
+                    "text": 0,
+                    "name": "C\u00e2mara de Lobos",
+                    "id": "camralobos"
+                },
+                {
+                    "text": 2,
+                    "name": "Funchal",
+                    "id": "funchal"
+                },
+                {
+                    "text": 0,
+                    "name": "Machico",
+                    "id": "machico"
+                },
+                {
+                    "text": 1,
+                    "name": "Ponta do Sol",
+                    "id": "pontasol"
+                },
+                {
+                    "text": 0,
+                    "name": "Porto Moniz",
+                    "id": "portomoniz"
+                },
+                {
+                    "text": 0,
+                    "name": "Porto Santo",
+                    "id": "portosanto"
+                },
+                {
+                    "text": 0,
+                    "name": "Ribeira Brava",
+                    "id": "ribeirabrava"
+                },
+                {
+                    "text": 0,
+                    "name": "Santa Cruz",
+                    "id": "santacruz"
+                },
+                {
+                    "text": 2,
+                    "name": "Santana",
+                    "id": "santana"
+                },
+                {
+                    "text": 0,
+                    "name": "S\u00e3o Vicente",
+                    "id": "saovicente"
+                }
+            ],
+            "total": 5,
+            "url": "http://www.procivmadeira.pt/images/dispositivo-socorro/zip2015.zip"
+        },
+        "04": {
+            "data": [
+                {
+                    "text": 2,
+                    "name": "Calheta",
+                    "id": "calheta"
+                },
+                {
+                    "text": 1,
+                    "name": "C\u00e2mara de Lobos",
+                    "id": "camralobos"
+                },
+                {
+                    "text": 1,
+                    "name": "Funchal",
+                    "id": "funchal"
+                },
+                {
+                    "text": 0,
+                    "name": "Machico",
+                    "id": "machico"
+                },
+                {
+                    "text": 1,
+                    "name": "Ponta do Sol",
+                    "id": "pontasol"
+                },
+                {
+                    "text": 1,
+                    "name": "Porto Moniz",
+                    "id": "portomoniz"
+                },
+                {
+                    "text": 0,
+                    "name": "Porto Santo",
+                    "id": "portosanto"
+                },
+                {
+                    "text": 1,
+                    "name": "Ribeira Brava",
+                    "id": "ribeirabrava"
+                },
+                {
+                    "text": 0,
+                    "name": "Santa Cruz",
+                    "id": "santacruz"
+                },
+                {
+                    "text": 1,
+                    "name": "Santana",
+                    "id": "santana"
+                },
+                {
+                    "text": 0,
+                    "name": "S\u00e3o Vicente",
+                    "id": "saovicente"
+                }
+            ],
+            "total": 8,
+            "url": "http://www.procivmadeira.pt/images/dispositivo-socorro/zip2015.zip"
+        }
+    }
+}
