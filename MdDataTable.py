@@ -3,29 +3,25 @@ import datetime
 import sys
 import os
 import common
-
+import Locations
 
 def main():
     dataFile = "data/data.json"
     data     = Files.Files().getCurrentJsonDataFromFile(dataFile)
+    cities   = []
     
-    cities = [ "Calheta", "Câmara de Lobos", "Funchal", "Machico", "Ponta do Sol",
-                "Porto Moniz", "Porto Santo", "Ribeira Brava", "Santa Cruz",
-                "Santana", "São Vicente"]
+    for city in Locations.cities:    
+        cities.append(city["name"]) 
     
-    headers = [ "Calheta", "Câmara de Lobos", "Funchal", "Machico", "Ponta do Sol",
-                "Porto Moniz", "Porto Santo", "Ribeira Brava", "Santa Cruz",
-                "Santana", "São Vicente", "Ano", "Mês"]
+    headers   = cities + [ "Mês", "Ano"]
     dataTable = []
 
     for year, yearValues in data.items():
         for months, monthvalues in yearValues.items():
             dataMonths = []
 
-            for city in cities:
-                ele = list(filter(lambda d: d['name'] == city, monthvalues['data']))
-                
-
+            for city in Locations.cities:
+                ele = list(filter(lambda d: d['id'] == city['id'], monthvalues['data']))
                 if len(ele) : 
                     dataMonths.append(ele[0]['text'])
             dataMonths.append(months)
@@ -49,9 +45,8 @@ def main():
             markDown+= " | " + str(v) 
         markDown+="\n"
 
-    print(markDown)
-
-
+    with open("data/data.md", 'wb') as f:
+        f.write(markDown.encode('utf8'))
 
     return 0  
 
