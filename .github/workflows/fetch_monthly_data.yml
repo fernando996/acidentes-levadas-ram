@@ -28,6 +28,10 @@ jobs:
       - name: 🎡 Fetch data from the month
         run: python StatisticsData.py
 
+      # Organize data on a table on a MD file
+      - name: 📅 Organize data in table
+        run: python MdDataTable.py
+
       - name: 🛠️ Commit acident data
         uses: actions-js/push@master
         with:
