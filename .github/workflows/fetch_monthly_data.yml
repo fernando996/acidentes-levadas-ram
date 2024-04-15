@@ -26,7 +26,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: 🎡 Fetch data from the month
-        run: python StatisticsData.py
+        run: python StatisticsData.py $(date  --date='-1 month' '+%Y-%m-%d')
 
       # Organize data on a table on a MD file
       - name: 📅 Organize data in table
