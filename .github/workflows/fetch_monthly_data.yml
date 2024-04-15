@@ -4,7 +4,8 @@ name: Monthly fecth
 on:
   schedule:
     - cron: '0 18 4 * *'
-
+    
+  workflow_dispatch:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -26,7 +27,11 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: 🎡 Fetch data from the month
-        run: python StatisticsData.py
+        run: python StatisticsData.py $(date  --date='-1 month' '+%Y-%m-%d')
+
+      # Organize data on a table on a MD file
+      - name: 📅 Organize data in table
+        run: python MdDataTable.py
 
       - name: 🛠️ Commit acident data
         uses: actions-js/push@master
