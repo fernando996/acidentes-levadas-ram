@@ -46,31 +46,39 @@ class Files:
             spWord = ".docx"    
 
 
-        text = raw['content'].replace(year, "")
-
+        text  = raw['content'].replace(year, "")
         texts = [text, text]
         if disSplit == False:
             texts = text.split(spWord)
-            
+        
         self.getData(texts[1])
 
         return self.parts
 
-    def getData(self, texts) :   
-        _texts = texts.split("\n")
-        _texts = " ".join(_texts).split(" ")
+    def getData(self, texts) :
 
+        _texts = texts.split("\n")
+
+        sizeSet = False
+        # if type(_texts) != list:
+        #     _texts = [_texts]
         for t in _texts:
-        
             if t.isdigit() :
                 if len(self.ySize) == 0: 
                     self.ySize.append(int(t))
                 elif self.ySize[-1] == int(t) or self.ySize[-1] > int(t)  :
-                    if len(self.parts)< len(Locations.cities):
+
+           
+                    if len(self.parts) < len(Locations.cities):
                         self.parts.append({'text':int(t), **Locations.cities[self.index] })
                         self.index+=1
                 else:
+                    print(self.ySize)
+
                     self.ySize.append(int(t))
+                # print(self.parts)
+
+
 
     def getCurrentJsonDataFromFile(self, filename): 
         try:

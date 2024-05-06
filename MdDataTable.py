@@ -13,7 +13,7 @@ def main():
     for city in Locations.cities:    
         cities.append(city["name"]) 
     
-    headers   = cities + [ "Mês", "Ano"]
+    headers   = cities + ["Total", "Mês", "Ano"]
     dataTable = []
 
     for year, yearValues in data.items():
@@ -24,6 +24,7 @@ def main():
                 ele = list(filter(lambda d: d['id'] == city['id'], monthvalues['data']))
                 if len(ele) : 
                     dataMonths.append(ele[0]['text'])
+            dataMonths.append((monthvalues['total']))
             dataMonths.append(months)
             dataMonths.append(year)
             dataTable.append(dataMonths)
