@@ -56,8 +56,12 @@ class Files:
 
         return self.parts
 
-    def getData(self, texts) :        
-        for t in texts:
+    def getData(self, texts) :   
+        _texts = texts.split("\n")
+        _texts = " ".join(_texts).split(" ")
+
+        for t in _texts:
+        
             if t.isdigit() :
                 if len(self.ySize) == 0: 
                     self.ySize.append(int(t))
