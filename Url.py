@@ -10,6 +10,8 @@ def isValidDate(date):
 
 def getUrlForDownload(date):
     isValidDate(date)
+    if(date.strftime("%m") == "08") : 
+        return URL + date.strftime("%m_%Yb") + ".pdf"
     return URL + date.strftime("%m_%Y") + ".pdf"
 
 def getZipUrlForDownload(date):
